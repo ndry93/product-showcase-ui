@@ -14,6 +14,7 @@ import {
 import { ErrorInterceptor } from "./_helpers";
 import { HomeComponent } from "./home/home.component";
 import { ProductsComponent } from "./products/products.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 import { AccordionModule } from 'primeng/accordion';
@@ -41,6 +42,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
       AlertComponent,
       HomeComponent,
       ProductsComponent,
+      ProductDetailComponent,
       PageNotFoundComponent
    ],
    imports: [
