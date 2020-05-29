@@ -1,0 +1,75 @@
+<p-dataView #dv [value]="users" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="username"
+    [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-4">
+                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+                        (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+                </div>
+                <div class="ui-g-6 ui-md-4 filter-container">
+                    <div style="position:relative">
+                        <input type="search" pInputText placeholder="Search by username"
+                            (input)="dv.filter($event.target.value)">
+                    </div>
+                </div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-user pTemplate="listItem">
+        <div class="ui-g-12">
+            <div class="row">
+                <div class="col-sm-8">
+                    <!-- <img src="assets/showcase/images/demo/car/{{user.username}}.png"> -->
+                    <div class="ui-g">
+                        <div class="ui-g-12">username: <b>{{user.username}}</b></div>
+                        <div class="ui-g-12">firstName: <b>{{user.firstName}}</b></div>
+                        <div class="ui-g-12">username: <b>{{user.username}}</b></div>
+                        <div class="ui-g-12">lastName: <b>{{user.lastName}}</b></div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button pButton type="button" icon="pi pi-search" (click)="selectUser($event, user)"></button>
+                </div>
+                <div class="col-sm-2">
+                    <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-user pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="user.username" [style]="{'text-align':'center'}">
+                <!-- <img src="assets/showcase/images/demo/car/{{user.username}}.png" width="60"> -->
+                <div class="car-detail">{{user.firstName}} - {{user.lastName}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+                <button pButton type="button" icon="pi pi-search" (click)="selectUser($event, user)"
+                    style="margin-top:0"></button>
+                <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
+
+<p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+    [style]="{width: '225px'}" (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="selectedUser">
+        <!-- <div class="ui-g-12" style="text-align:center">
+            <img src="assets/showcase/images/demo/car/{{selectedUser.username}}.png">
+        </div> -->
+        <div class="ui-g-4">username: </div>
+        <div class="ui-g-8">{{selectedUser.username}}</div>
+
+        <div class="ui-g-4">username: </div>
+        <div class="ui-g-8">{{selectedUser.username}}</div>
+
+        <div class="ui-g-4">firstName: </div>
+        <div class="ui-g-8">{{selectedUser.firstName}}</div>
+
+        <div class="ui-g-4">lastName: </div>
+        <div class="ui-g-8">{{selectedUser.lastName}}</div>
+    </div>
+</p-dialog>
