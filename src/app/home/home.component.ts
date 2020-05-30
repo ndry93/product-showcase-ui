@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit {
       return;
     }
 
+    const productId = 1;
     this.loading = true;
+    // Set our navigation extras object
+    
+    this.router.navigate(['/product-detail', { id: productId }]);
   }
 }

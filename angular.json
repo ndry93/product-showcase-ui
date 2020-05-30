@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "product-showcase-ui"
+  "defaultProject": "product-showcase-ui",
+  "cli": {
+    "analytics": false
+  }
 }
