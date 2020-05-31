@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  selectUser(event: Event, product: Product) {
+  selectProduct(event: Event, product: Product) {
     this.selectedProduct = product;
     this.displayDialog = true;
     event.preventDefault();
