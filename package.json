@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "preinstall": "npm install -g angular-cli",
+    "start": "node start",
+    "postinstall": "ng build --aot -prod",
     "serve": "ng serve --open",
     "build": "ng build",
     "build-prod": "ng build --prod",
@@ -24,13 +24,16 @@
     "@angular/platform-browser-dynamic": "^9.1.9",
     "@angular/router": "^9.1.9",
     "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^9.0.5",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@angular/cli": "^9.1.7",
+    "@angular/compiler-cli": "^9.1.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.7",
