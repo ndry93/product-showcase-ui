@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "node start",
+    "start": "node server.js",
     "postinstall": "ng build --prod",
     "serve": "ng serve --open",
     "serve:prod": "ng serve --open --prod",
