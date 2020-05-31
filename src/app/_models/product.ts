@@ -1,7 +1,6 @@
 export class Product {
   id: number;
-  name: string;
+  url: string;
   description: string;
-  price: number;
   created_timestamp: string;
 }
