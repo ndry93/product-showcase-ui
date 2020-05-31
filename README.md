@@ -6,6 +6,15 @@
 2. npm run start
 ```
 
+## Techs
+```
+1. Angular 9
+2. primeNG 9
+3. bootstrap 4
+4. jquery 3.5.1
+5. express
+```
+
 ## With Docker
 Build Image
 
