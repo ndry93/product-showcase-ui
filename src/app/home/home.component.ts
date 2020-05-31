@@ -3,11 +3,12 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
-import { AlertService } from "@/_services";
+import { AlertService, ScraperService } from "@/_services";
+import { ScraperDTO } from '@/_models';
 
 @Component({ templateUrl: "home.component.html" })
 export class HomeComponent implements OnInit {
-  productForm: FormGroup;
+  scraperForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -16,13 +17,14 @@ export class HomeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private scraperService: ScraperService,
   ) {
   }
 
   ngOnInit() {
-    this.productForm = this.formBuilder.group({
-      productUrl: ["", Validators.required]
+    this.scraperForm = this.formBuilder.group({
+      url: ["", Validators.required]
     });
 
     // get return url from route parameters or default to '/'
@@ -31,21 +33,38 @@ export class HomeComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() {
-    return this.productForm.controls;
+    return this.scraperForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true;
 
     // stop here if form is invalid
-    if (this.productForm.invalid) {
+    if (this.scraperForm.invalid) {
+      this.loading = false;
       return;
     }
 
-    const productId = 1;
-    this.loading = true;
-    // Set our navigation extras object
-    
-    this.router.navigate(['/product-detail', { id: productId }]);
+    this.scraperService
+      .register(this.scraperForm.value)
+      .subscribe(
+      resp => {
+        this.alertService.success("Registration successful", true);
+        
+        // Set our navigation extras object
+        const respJson = JSON.parse(JSON.stringify(resp));
+        if (respJson.data.id) {
+          this.router.navigate(['/product-detail', { id: respJson.data.id }]);
+        } else {
+          this.alertService.error('unexpected error while registering the url');
+        }
+        this.loading = false;
+      },
+      error => {
+        this.alertService.error(error);
+        this.loading = false;
+      }
+    );
   }
 }

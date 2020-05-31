@@ -1,2 +1,2 @@
 export { AlertService } from "./alert.service";
-export { ProductService } from "./product.service";
+export { ScraperService } from "./scraper.service";

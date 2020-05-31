@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://myweb-scraper-api.herokuapp.com"
+  apiUrl: "https://myweb-scraper-api.herokuapp.com/api"
 };

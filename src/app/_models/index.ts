@@ -1,1 +1,1 @@
-export { Product } from "./product";
+export { ScraperDTO } from "./scraper.dto";

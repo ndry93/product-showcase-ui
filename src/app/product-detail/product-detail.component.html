@@ -1,2 +1,84 @@
-<h2>Product Detail</h2>
-<div>The Content</div>
+<h2>History</h2>
+<i>To display list of historical records of scrapped data</i>
+<ul>
+  <li>last refreshed 1</li>
+  <li>last refreshed 2 </li>
+</ul>
+
+<h2>Preview</h2>
+<i>preview displays selected url scrapped data on specific revision number</i>
+<br />
+<div class="row">
+  <div class="col-sm-12">
+    <img
+      *ngIf="loading"
+      class="pl-3"
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+    />
+    <iframe
+      allowfullscreen
+      [srcdoc]="contentHTML"
+      width="100%"
+      height="800px"
+    ></iframe>
+  </div>
+</div>
+<!-- <iframe [src]="contentHTML" width="800" height="600" allowfullscreen></iframe> -->
+<!-- <p-dataView #dv [value]="scraperDtos" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="url"
+    [sortField]="sortField" [sortOrder]="sortOrder">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-4">
+                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By"
+                        (onChange)="onSortChange($event)" [style]="{'min-width':'140px'}"></p-dropdown>
+                </div>
+                <div class="ui-g-6 ui-md-4 filter-container">
+                    <div style="position:relative">
+                        <input type="search" pInputText placeholder="Search"
+                            (input)="dv.filter($event.target.value)">
+                    </div>
+                </div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-scraper pTemplate="listItem">
+        <div class="ui-g-12">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="ui-g">
+                        <div class="ui-g-12">id: <b>{{scraper.id}}</b></div>
+                        <div class="ui-g-12">url: <b>{{scraper.url}}</b></div>
+                        <div class="ui-g-12">created on: <b>{{scraper.created_timestamp}}</b></div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button pButton type="button" icon="pi pi-search" (click)="select($event, scraper)"></button>
+                </div>
+                <div class="col-sm-2">
+                    <a (click)="delete(scraper.id)" class="text-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-scraper pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="scraper.url" [style]="{'text-align':'center'}">
+                <hr class="ui-widget-content" style="border-top:0">
+                <button pButton type="button" icon="pi pi-search" (click)="select($event, scraper)"
+                    style="margin-top:0"></button>
+                <a (click)="delete(scraper.id)" class="text-danger">Delete</a>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
+
+<p-dialog header="Preview" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+    [style]="{width: '800px'}" (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="selectedScraperDto">
+        <iframe [src]="selectedScraperDto.url" width="800" height="600" allowfullscreen></iframe>
+    </div>
+</p-dialog> -->
